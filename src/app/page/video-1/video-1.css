@@ -1,0 +1,15 @@
+.backGroud{
+    background: radial-gradient(400px at top right, rgba(107, 87, 132, 0.3), transparent),
+    radial-gradient(400px at bottom left, rgba(107, 87, 132, 0.3), transparent),
+    #ffffff;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 100;
+}
+.backGroud::-webkit-scrollbar{
+    display: none;
+}

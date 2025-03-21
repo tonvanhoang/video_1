@@ -1,0 +1,129 @@
+
+.containerBox-4 {
+    position: absolute;
+    top: 50%;
+    left: 120%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 70vh;
+    z-index: 1;
+    transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease, opacity 0.5s ease;
+}
+.bg {
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.9); 
+    z-index: -1;
+    pointer-events: none;
+    display: none;
+    transition: all 0.5s;
+    display: none;
+}
+.containerBox-4:hover + .bg{
+    display: block;
+    z-index: 10;
+}
+.containerBox-4.centered {
+    top: 40%;
+    transition: top 0.5s ease;
+}
+.containerBox-4.return{
+    top: 50%;
+}
+
+.containerBox-4:hover {
+    cursor: pointer;
+    transform: translate(-50%, -50%) rotateZ(-30deg) scale(1.3);
+    top: 50%;
+    z-index: 100;
+}
+.containerBox-4:hover + .backgroud{
+    display: block;
+}
+.containerBox-4:hover .bottom{
+    background: linear-gradient(to right, rgb(200, 196, 232), white);
+}
+.containerBox-4 .top{
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to right, rgb(200, 196, 232), white);
+    border-radius: 150px 150px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px 1px rgba(200, 196, 232, 0.4);
+}
+.containerBox-4 .top img{
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    object-fit: cover;
+}
+.containerBox-4 .bottom{
+    width: 100%;
+    height: 50%;
+    background-color: white;
+    border-radius: 0px 0px 150px 150px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 5px 1px rgba(200, 196, 232, 0.4);
+
+}
+.containerBox-4 .bottom p{
+    color: gray;
+    font-size: 12px;
+}
+.containerBox-4 .bottom span{
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    line-height: 36px;
+}
+.containerBox-4 .bottom a{
+    font-size: 20px;
+    display: block;
+}
+.containerBox-4 .bottom .rating{
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    align-items: center;
+}
+.containerBox-4 .bottom .rating .item-1 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(#6B5784 0% 60%, transparent 60% 100%);
+    position: relative;
+}
+
+/* Tạo vòng tròn trắng bên trong để hiển thị số */
+.containerBox-4 .bottom .rating .item-1::before {
+    content: "60%";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 10px;
+}

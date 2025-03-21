@@ -1,0 +1,10 @@
+.containerBox-6{
+    width: 1000px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 180%;
+    transform: translate(-50%,-50%);
+    z-index: 0;
+}
