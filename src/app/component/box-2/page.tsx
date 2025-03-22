@@ -32,7 +32,7 @@ export default function ComponentBox2() {
           setScrollTimes(1);
         }
         setPrevScrollLeft(currentScrollLeft);
-      }, 100);
+      }, 300);
     };
 
     if (backgroundElement) {
@@ -55,7 +55,7 @@ export default function ComponentBox2() {
       ${isExpanded ? "expand" : ""}
       ${isShrink ? "shrink" : ""}`}  >
       <div className="img">
-        <img src="./img/apple1.png" alt="Apple Watch 1" />
+        <img src="./img/tainghe.png" alt="Apple Watch 1" />
         <img src="./img/apple2.png" alt="Apple Watch 2" />
       </div>
       <div className="content">

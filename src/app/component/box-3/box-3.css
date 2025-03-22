@@ -12,13 +12,16 @@
     transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
     z-index: 1;
     background-color: white;
-    display: flex;
     align-items: center;
 }
-.containerBox-3.centered .contentBox-3{
+
+/* Khi containerBox-3 có class centered, contentBox-3 sẽ hiển thị mượt */
+.containerBox-3.centered .contentBox-3 {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
-.containerBox-3 .childBox-3{
+
+.containerBox-3 .childBox-3 {
     background-color: #8C8F9E;
     width: 150px;
     height: 150px;
@@ -29,25 +32,27 @@
     align-items: center;
     justify-content: center;
     color: white;
-    box-shadow: 0 0 10px 40px rgba(0, 0, 255, 0.04); 
-
+    box-shadow: 0 0 10px 40px rgba(0, 0, 255, 0.04);
 }
 
-.containerBox-3 .childBox-3 p{
+.containerBox-3 .childBox-3 p {
     margin: 0px;
 }
-.containerBox-3 .childBox-3 span{
+
+.containerBox-3 .childBox-3 span {
     padding: 5px 0px;
     font-size: 28px;
 }
-.containerBox-3 .contentBox-3{
+
+/* Làm mượt animation của contentBox-3 */
+.containerBox-3 .contentBox-3 {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     position: absolute;
     top: 88%;
     left: 88%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%) scale(0.8);
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -58,15 +63,27 @@
     box-shadow: 0px 0px 50px 3px rgba(107, 87, 132, 0.1);
     opacity: 0;
 }
-.containerBox-3 .contentBox-3 p{
+
+/* Làm mượt hiển thị chữ */
+.containerBox-3 .contentBox-3 p {
     color: gray;
     font-size: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
-.containerBox-3 .contentBox-3 span{
+
+.containerBox-3.centered .contentBox-3 p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.containerBox-3 .contentBox-3 span {
     font-size: 28px;
     text-align: center;
     line-height: 36px;
 }
-.containerBox-3 .contentBox-3 a{
+
+.containerBox-3 .contentBox-3 a {
     font-size: 24px;
 }

@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import "../box-4/box-4.css";
 
 export default function ComponentBox4() {
-  const [isCentered, setIsCentered] = useState(false);
+  const [isCentered, setIsCentered] = useState(false); // Căn giữa khi lướt
   const [prevScrollLeft, setPrevScrollLeft] = useState(0);
   const [scrollTimes, setScrollTimes] = useState(0);
   const [isTop, setIsTop] = useState(false);
-  const [bgPosition, setBgPosition] = useState(0); // Vị trí của .bg
-  // Xử lý cuộn và căn giữa phần tử
+  const [bgPosition, setBgPosition] = useState(0);
+  const [isHovered, setIsHovered] = useState(false); // Căn giữa khi hover
+
   useEffect(() => {
     const backgroundElement = document.querySelector(".backGroud") as HTMLElement;
     const boxElement = document.querySelector(".containerBox-4") as HTMLElement;
@@ -38,7 +39,7 @@ export default function ComponentBox4() {
           });
         }
         setPrevScrollLeft(currentScrollLeft);
-      }, 100);
+      }, 300);
     };
 
     backgroundElement.addEventListener("scroll", handleScroll);
@@ -49,11 +50,36 @@ export default function ComponentBox4() {
     };
   }, [prevScrollLeft]);
 
+  // Khi hover vào, tự căn giữa
+  const handleMouseEnter = () => {
+    const backgroundElement = document.querySelector(".backGroud") as HTMLElement;
+    const boxElement = document.querySelector(".containerBox-4") as HTMLElement;
+    if (!backgroundElement || !boxElement) return;
+
+    setTimeout(() => {
+      const boxCenter = boxElement.offsetLeft;
+      const screenCenter = window.innerWidth;
+      const scrollPosition = boxCenter - screenCenter / 2;
+
+      backgroundElement.scrollTo({ left: scrollPosition, behavior: "smooth" });
+      setIsHovered(true);
+    }, 500); // ⏳ ĐÃ CHỈNH LẠI 800ms
+  };
+
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <>
-      <div className={`containerBox-4 ${isCentered ? "centered" : ""} ${isTop ? "return" : ""}`}>
+      <div
+        className={`containerBox-4 ${isCentered ? "centered" : ""} ${isTop ? "return" : ""} ${isHovered ? "hovered" : ""}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="top">
-          <img src="./img/apple2.png" alt="Apple" />
+          <img src="./img/box4.png" alt="Apple" />
         </div>
         <div className="bottom">
           <div className="contentBox-3">

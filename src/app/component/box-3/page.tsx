@@ -27,7 +27,7 @@ export default function ComponentBox3() {
           return prev +1;
         });
         setPrevScrollLeft(currentScrollLeft);
-      }, 100);
+      }, 300);
     };
     backgroundElement.addEventListener("scroll", handleScroll);
 

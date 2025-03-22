@@ -38,7 +38,7 @@ export default function ComponentBox1() {
 
         }
         setPrevScrollLeft(currentScrollLeft);
-      }, 100);
+      }, 300);
     };
 
     if (backgroundElement) {
