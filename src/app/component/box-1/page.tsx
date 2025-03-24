@@ -62,8 +62,8 @@ export default function ComponentBox1() {
       style={{ float: "left", marginRight: "20px" }} // Đặt box ở bên trái
     >
       <div className="img">
-        <img src="/img/apple1.png" alt="Apple Watch 1" />
-        <img src="/img/apple2.png" alt="Apple Watch 2" />
+        <img src="/img/cam1.png" alt="Apple Watch 1" />
+        <img src="/img/cam2.png" alt="Apple Watch 2" />
       </div>
       <div className="content">
         <button>

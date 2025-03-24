@@ -34,6 +34,7 @@
 
 .containerBox-1.expanded .img img:last-child {
     display: block;
+    width: 270px;
 }
 .containerBox-1.expanded .img img:first-child {
     display: none;
@@ -60,7 +61,11 @@
     transform: translateY(0);
     animation: fadeUp 0.7s ease-in-out;
 }
-
+.containerBox-1.expanded .img {
+    width: 45%;
+    padding-right: 30px;
+    height: 30vh;
+}
 .containerBox-1.shrink .content p {
     opacity: 0;
     transform: translateY(20px);
@@ -96,8 +101,8 @@
 }
 
 .containerBox-1 .img {
-    height: 40vh;
-    width: 45%;
+    height: 25vh;
+    width: 50%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -107,9 +112,10 @@
 }
 
 .containerBox-1 .img img:first-child {
-    width: 200px;
-    height: 300px;
+    width: 250px;
+    height: 130px;
     object-fit: cover;
+    background-position: center;
     display: block;
     transition: opacity 0.7s ease;
 }
@@ -120,6 +126,8 @@
     object-fit: cover;
     display: none;
     transition: opacity 0.7s ease;
+    background-position: center;
+
 }
 
 .containerBox-1 .content {

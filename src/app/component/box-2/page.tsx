@@ -55,8 +55,8 @@ export default function ComponentBox2() {
       ${isExpanded ? "expand" : ""}
       ${isShrink ? "shrink" : ""}`}  >
       <div className="img">
-        <img src="./img/tainghe.png" alt="Apple Watch 1" />
-        <img src="./img/apple2.png" alt="Apple Watch 2" />
+        <img src="./img/cam1.png" alt="Apple Watch 1" />
+        {/* <img src="./img/apple2.png" alt="Apple Watch 2" /> */}
       </div>
       <div className="content">
         <span className="brand">Apple</span>
