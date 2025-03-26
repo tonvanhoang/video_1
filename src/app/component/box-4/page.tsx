@@ -1,28 +1,23 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../box-4/box-4.css";
 
 export default function ComponentBox4() {
-  const [isCentered, setIsCentered] = useState(false); // Căn giữa khi lướt
+  const [isCentered, setIsCentered] = useState(false);
   const [prevScrollLeft, setPrevScrollLeft] = useState(0);
   const [scrollTimes, setScrollTimes] = useState(0);
   const [isTop, setIsTop] = useState(false);
-  const [bgPosition, setBgPosition] = useState(0);
-  const [isHovered, setIsHovered] = useState(false); // Căn giữa khi hover
-
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+  const [isClass,setIsClass] = useState(false)
   useEffect(() => {
     const backgroundElement = document.querySelector(".backGroud") as HTMLElement;
     const boxElement = document.querySelector(".containerBox-4") as HTMLElement;
     if (!backgroundElement || !boxElement) return;
-
     let scrollTimeout: NodeJS.Timeout;
-
     const handleScroll = () => {
       const currentScrollLeft = backgroundElement.scrollLeft;
       const screenWidth = window.innerWidth;
       clearTimeout(scrollTimeout);
-      setBgPosition(currentScrollLeft);
-
       scrollTimeout = setTimeout(() => {
         if (currentScrollLeft > prevScrollLeft) {
           setScrollTimes((prev) => {
@@ -39,46 +34,50 @@ export default function ComponentBox4() {
           });
         }
         setPrevScrollLeft(currentScrollLeft);
-      }, 300);
+      }, 100);
     };
-
     backgroundElement.addEventListener("scroll", handleScroll);
-
     return () => {
       backgroundElement.removeEventListener("scroll", handleScroll);
       clearTimeout(scrollTimeout);
     };
   }, [prevScrollLeft]);
-
-  // Khi hover vào, tự căn giữa
-  const handleMouseEnter = () => {
+  useEffect(() => {
     const backgroundElement = document.querySelector(".backGroud") as HTMLElement;
-    const boxElement = document.querySelector(".containerBox-4") as HTMLElement;
+    const boxElement = document.querySelector(".bg_box4") as HTMLElement;
     if (!backgroundElement || !boxElement) return;
-
+    const updatePosition = () => {
+      const scrollLeft = backgroundElement.scrollLeft;
+      const screenWidth = backgroundElement.offsetWidth;
+      const boxWidth = boxElement.offsetWidth;
+      // Tính toán vị trí căn giữa
+      const newLeft = scrollLeft + (screenWidth / 2) - (boxWidth / 2);
+      boxElement.style.transform = `translateX(${newLeft}px)`;
+    };
+    backgroundElement.addEventListener("scroll", updatePosition);
+    updatePosition(); // Chạy ngay khi load trang
+    return () => {
+      backgroundElement.removeEventListener("scroll", updatePosition);
+    };
+  }, []);
+  const hoverContainer = ()=>{
     setTimeout(() => {
-      const boxCenter = boxElement.offsetLeft;
-      const screenCenter = window.innerWidth;
-      const scrollPosition = boxCenter - screenCenter / 2;
-
-      backgroundElement.scrollTo({ left: scrollPosition, behavior: "smooth" });
-      setIsHovered(true);
-    }, 500); // ⏳ ĐÃ CHỈNH LẠI 800ms
-  };
-
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
+      setIsClass(true)
+    }, 300);
+  }
+  const leaveContainer=()=>{
+    setIsClass(false)
+  }
   return (
     <>
       <div
-        className={`containerBox-4 ${isCentered ? "centered" : ""} ${isTop ? "return" : ""} ${isHovered ? "hovered" : ""}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className={`containerBox-4 ${isCentered ? "centered" : ""} ${isTop ? "return" : ""}`}
+        onMouseEnter={hoverContainer}
+        onMouseLeave={leaveContainer}
       >
-        <div className="top">
+        <div className={`top`}>
+        {isClass && <div className="newTop"></div>} 
+
           <img src="./img/box4.png" alt="Apple" />
         </div>
         <div className="bottom">
@@ -93,7 +92,7 @@ export default function ComponentBox4() {
           </div>
         </div>
       </div>
-      <div className="bg" style={{ left: `${bgPosition}px` }}></div>
+      <div className="bg_box4"></div>
     </>
   );
 }

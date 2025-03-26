@@ -59,18 +59,16 @@ export default function ComponentBox1() {
       className={`containerBox-1
         ${isExpanded ? "expanded" : ""}
         ${isShrink ? "shrink" : ""}`}
-      style={{ float: "left", marginRight: "20px" }} // Đặt box ở bên trái
-    >
+        style={{ float: "left", marginRight: "20px" }}>
       <div className="img">
         <img src="/img/cam1.png" alt="Apple Watch 1" />
-        <img src="/img/cam2.png" alt="Apple Watch 2" />
       </div>
       <div className="content">
         <button>
           <a href="#">butbutbut</a>
         </button>
         <span className="brand">Apple</span>
-        <a className="name" href="#">Watch Series 9</a>
+        <a className="name" href="#">Watch Series 7</a>
         <span className="price">$699</span>
         <p>
           Swimproof and crack-resistant technology makes this a great fit for both your weekly swims and early-morning hikes.

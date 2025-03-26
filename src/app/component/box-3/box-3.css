@@ -13,6 +13,7 @@
     z-index: 1;
     background-color: white;
     align-items: center;
+
 }
 
 /* Khi containerBox-3 có class centered, contentBox-3 sẽ hiển thị mượt */
@@ -23,6 +24,7 @@
 
 .containerBox-3 .childBox-3 {
     background-color: #8C8F9E;
+    opacity: 0.5;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -32,7 +34,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    box-shadow: 0 0 10px 40px rgba(0, 0, 255, 0.04);
+    box-shadow: 0 0 10px 40px rgba(0, 0, 255, 0.1);
 }
 
 .containerBox-3 .childBox-3 p {

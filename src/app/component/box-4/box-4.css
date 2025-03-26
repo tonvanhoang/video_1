@@ -1,16 +1,58 @@
 .containerBox-4 {
     position: absolute;
     top: 50%;
-    left: 120%;
-    transform: translate(-50%, -50%) scale(1);
+    left: 125%;
+    transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
     width: 300px;
     height: 70vh;
     z-index: 1;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
-    transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease, opacity 0.5s ease;
+    transition: all 0.8s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 0 5px 1px rgba(200, 196, 232, 0.4);
+    border-radius: 150px;
 }
-/* Hiệu ứng fade-in khi xuất hiện */
+.containerBox-4.centered{
+    top: 40%;
+    transition: all 0.8s ease-in-out;
+}
+.containerBox-4.return{
+    top: 50%;
+    transition: all 0.8s ease-in-out;
+
+}
+.bg_box4 {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.containerBox-4:hover {
+    cursor: pointer;
+    z-index: 15;
+    transform: translate(-50%, -50%) rotateZ(-30deg) scale(1.4);
+    top: 50%;
+    transition: all 0.8s ease-in-out;
+}
+/* Khi không hover, box xoay ngược lại */
+.containerBox-4:not(:hover) {
+    transform: translate(-50%, -50%) rotateZ(0deg) scale(1);
+    transition: transform 0.5s ease-in-out;
+}
+.containerBox-4:hover + .bg_box4 {
+    display: block;
+    opacity: 1;
+    z-index: 2;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -21,114 +63,91 @@
         transform: translate(-50%, -50%) scale(1);
     }
 }
-/* Hover tự căn giữa */
-.containerBox-4.hovered {
-    transform: translate(-50%, -50%) rotateZ(-15deg) scale(1.3);
-    opacity: 1;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease;
+@keyframes fadeColor {
+    0% {
+        background-size: 100% 0%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
 }
-/* Background transition */
-.bg {
-    position: absolute; 
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.9); 
-    z-index: -1;
-    pointer-events: none;
-    display: none;
-    transition: all 0.ss;
-    display: none;
-}
-.containerBox-4:hover + .bg{
-    display: block;
-    z-index: 10;
-    opacity: 1;
-}
-
-/* Hiệu ứng di chuyển khi căn giữa */
-.containerBox-4.centered {
-    top: 40%;
-    transition: top 0.5s ease-in-out;
-}
-
-/* Trả về vị trí ban đầu */
-.containerBox-4.return {
-    top: 50%;
-}
-
-/* Hover animation */
-.containerBox-4:hover {
-    cursor: pointer;
-    transform: translate(-50%, -50%) rotateZ(-15deg) scale(1.3);
-    top: 50%;
-    z-index: 100;
-    transition: transform 0.3s ease-in-out, top 0.3s ease;
-}
-
-/* Hover background effect */
-.containerBox-4:hover .bottom {
-    background: linear-gradient(to right, rgb(200, 196, 232), white);
-    transition: all 0.3s;
-}
-
-/* Top section styling */
-.containerBox-4 .top {
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to right, rgb(200, 196, 232), white);
-    border-radius: 150px 150px 0px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 5px 1px rgba(200, 196, 232, 0.4);
-}
-
-/* Image animation */
-.containerBox-4 .top img {
-    width: 150px;
-    height: 150px;
-    background-position: center;
-    object-fit: cover;
-    transform: scale(0.8);
-    animation: bounce 1s infinite alternate;
-}
-
-/* Bounce animation */
-@keyframes bounce {
-    0% { transform: scale(0.8) translateY(0px); }
-    100% { transform: scale(1) translateY(-10px); }
-}
-
-/* Bottom section */
 .containerBox-4 .bottom {
     width: 100%;
     height: 50%;
-    background-color: white;
-    border-radius: 0px 0px 150px 150px;
+    background: linear-gradient(to right, rgb(120, 110, 210) 15%, rgb(200, 196, 232) 70%);
+    background-size: 100% 0%;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-shadow: 0 0 5px 1px rgba(200, 196, 232, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+.containerBox-4:hover .bottom {
+    animation: fadeColor 0.5s ease-in-out forwards;
+    color: white;
+}
+@keyframes topGradientEffect {
+    0% {
+        background: linear-gradient(to top right, rgb(120, 110, 210) 0%, rgb(255, 255, 255) 0%);
+        border-radius: 150px 150px 0px 0px;
+    }
+    100% {
+        background: linear-gradient(to top right, rgb(120, 110, 210) 0%, rgb(255, 255, 255) 100%);
+        border-radius: 180px 180px 50px 50px;
+    }
+}
+.containerBox-4 .top {
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to right, rgb(120, 110, 210) 15%, rgb(200, 196, 232) 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease-in-out;
+    overflow: hidden;
+}
+.newTop {
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.5;
+    z-index: 10; 
 }
 
-/* Text styling */
+.containerBox-4 .top img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transform: scale(0.8);
+    animation: bounce 1s infinite alternate;
+}
+.containerBox-4:hover .top img{
+    width: 200px;
+    height: 200px;
+    transform: scale(098);
+
+}
+.containerBox-4:hover .top{
+    justify-content: end;
+
+}
+@keyframes bounce {
+    0% { transform: scale(0.8) translateY(0px); }
+    100% { transform: scale(1) translateY(-10px); }
+}
 .containerBox-4 .bottom p {
     color: gray;
     font-size: 12px;
     transition: color 0.3s ease-in-out;
 }
-
-/* Text hover effect */
-.containerBox-4:hover .bottom p {
-    color: black;
-}
-
-/* Product name */
 .containerBox-4 .bottom span {
     font-size: 20px;
     text-align: center;
@@ -136,25 +155,11 @@
     line-height: 36px;
     transition: transform 0.3s ease-in-out;
 }
-
-/* Scale effect on hover */
-.containerBox-4:hover .bottom span {
-    transform: scale(1.1);
-}
-
-/* Price */
 .containerBox-4 .bottom a {
     font-size: 20px;
     display: block;
     transition: color 0.3s ease-in-out;
 }
-
-/* Price hover */
-.containerBox-4:hover .bottom a {
-    color: #6B5784;
-}
-
-/* Rating section */
 .containerBox-4 .bottom .rating {
     display: flex;
     gap: 10px;
@@ -162,7 +167,6 @@
     align-items: center;
 }
 
-/* Rating circle */
 .containerBox-4 .bottom .rating .item-1 {
     width: 40px;
     height: 40px;
@@ -178,13 +182,9 @@
     position: relative;
     transition: transform 0.3s ease-in-out;
 }
-
-/* Scale rating circle on hover */
 .containerBox-4:hover .bottom .rating .item-1 {
     transform: scale(1.2);
 }
-
-/* Inner circle */
 .containerBox-4 .bottom .rating .item-1::before {
     content: "60%";
     position: absolute;
@@ -198,8 +198,7 @@
     color: black;
     font-size: 10px;
 }
-
-/* Background fade-in */
 .containerBox-4:hover + .backgroud {
     display: block;
+
 }

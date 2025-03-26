@@ -2,62 +2,107 @@
     position: absolute;
     top: 75%;
     left: 60%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     width: 900px;
     height: 900px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    transition: transform 0.7s ease-in-out, top 0.7s ease-in-out, left 0.7s ease-in-out, opacity 0.7s ease-in-out;
-    box-shadow: 0 15px 20px rgba(181, 161, 129, 0.7);
-    background-color: white;
+    transition: all 0.8s ease-in-out;
+    box-shadow: 0px 10px 30px rgba(208,196,188, 0.7); 
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     z-index: 0;
 }
 
 .containerBox-2.expand {
-    top: 75%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    width: 900px;
-    height: 900px;
-    box-shadow: 0 10px 40px rgba(181, 161, 129, 0.7);
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0px 20px 30px rgba(208,196,188, 0.7); 
     z-index: 3;
 }
 
 .containerBox-2.shrink {
     top: 75%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    height: 700px;
+    left: 66%;
+    transform: translate(-50%, -50%) scale(0.85);
+    box-shadow: 0 30px 50px rgba(208,196,188, 0.3);
     z-index: 0;
+    background-color: white;
 }
 
-/* Hiệu ứng hiển thị chữ mượt mà */
-.containerBox-2 .content p {
-    opacity: 0;
-    display: none;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+/* Ảnh mượt hơn khi thay đổi */
+.containerBox-2 .img {
+    transition: all 1.2s ease-in-out;
+
 }
 
+.containerBox-2.expand .img {
+    transform: translateY(-40px);
+}
+
+.containerBox-2.shrink .img {
+    transform: translateY(40px);
+}
+.containerBox-2.expand .content {
+    transform: scale(1)
+}
+/* Nội dung hiển thị mượt */
 .containerBox-2.expand .content p {
     display: block;
     opacity: 1;
+    transition: all 0.8s ease-in-out;
     transform: translateY(0);
-    animation: fadeUp 0.7s ease-in-out;
+    animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .containerBox-2.shrink .content p {
     opacity: 0;
     transform: translateY(20px);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+.containerBox-2.reset {
+    top: 75%;
+    left: 60%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 900px;
+    height: 900px;
+    z-index: 1;
+    transition: all 1.5s ease-in-out;
+
+    opacity: 1;
 }
 
-/* Hiệu ứng fade-up giúp chữ xuất hiện mềm mại */
+.containerBox-2.reset .content {
+    transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+    transform: scale(1);
+}
+
+.containerBox-2.reset .content p {
+    opacity: 0;
+    height: auto;
+    transform: translateY(0);
+    display: none;
+    transition: all 0.8s ease-in-out;
+    animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.containerBox-2.reset .img {
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease-in-out;
+    transform: scale(1);
+}
+
+/* Hiệu ứng mượt cho ảnh khi reset */
+.containerBox-2.reset .img img {
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animation mượt mà */
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -67,37 +112,42 @@
 
 .containerBox-2 .content {
     width: 40%;
-    padding-right: 100px;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding-bottom: 360px;
+    padding-bottom: 320px;
+    transition: all 0.5s;
 }
-
 .containerBox-2 .img {
     border-radius: 60%;
-    height: 50%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
+    width: 60%;
+    text-align: center;
+    padding-left: 150px;
+    padding-top: 150px;
+    transition: all 0.3s;
 }
+.containerBox-2 .content p {
+    width: 250px;
+    opacity: 0;
+    display: none;
+    transform: translateY(20px);
+    transition: all 0.8s ease-in-out;
 
-/* Làm mượt hiệu ứng ảnh */
+}
 .containerBox-2 .img img {
-    width: 500px;
-    height: 200px;
+    max-width: 100%;
     object-fit: cover;
     background-position: center;
-    display: block;
-    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+    transition: opacity 0.9s ease-in-out, transform 0.9s ease-in-out;
 }
 
 /* Các thành phần khác */
 .containerBox-2 .content .brand {
+    font-size: 20px;
     padding: 15px 0px;
     display: block;
     font-weight: 200;
+    
 }
 
 .containerBox-2 .content .name {
@@ -110,7 +160,6 @@
     display: block;
 }
 
-/* Đánh giá */
 .containerBox-2 .content .rating {
     display: flex;
     gap: 10px;
@@ -129,7 +178,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(181,161,129);
+    background: conic-gradient(rgb(181,161,129) 0% 60%, transparent 60% 100%);
     position: relative;
 }
 

@@ -6,8 +6,6 @@ export default function ComponentBox5() {
   const [isCentered, setIsCentered] = useState(false);
   const [prevScrollLeft, setPrevScrollLeft] = useState(0);
   const [scrollTimes, setScrollTimes] = useState(0);
-  const [bgPosition, setBgPosition] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const backgroundElement = document.querySelector(".backGroud") as HTMLElement;
@@ -19,7 +17,6 @@ export default function ComponentBox5() {
     const handleScroll = () => {
       const currentScrollLeft = backgroundElement.scrollLeft;
       clearTimeout(scrollTimeout);
-      setBgPosition(currentScrollLeft);
 
       scrollTimeout = setTimeout(() => {
         if (currentScrollLeft > prevScrollLeft) {
@@ -28,6 +25,7 @@ export default function ComponentBox5() {
               const boxCenter = boxElement.offsetLeft;
               const screenCenter = window.innerWidth;
               const scrollPosition = boxCenter - screenCenter / 2;
+
               backgroundElement.scrollTo({ left: scrollPosition, behavior: "smooth" });
               setIsCentered(true);
             }
@@ -35,39 +33,44 @@ export default function ComponentBox5() {
           });
         }
         setPrevScrollLeft(currentScrollLeft);
-      }, 300);
+      }, 100); // Giảm thời gian debounce để phản ứng nhanh hơn nhưng vẫn mượt
     };
+
     backgroundElement.addEventListener("scroll", handleScroll);
     return () => {
       backgroundElement.removeEventListener("scroll", handleScroll);
       clearTimeout(scrollTimeout);
     };
   }, [prevScrollLeft]);
-  const handleMouseEnter = () => {
+
+  useEffect(() => {
     const backgroundElement = document.querySelector(".backGroud") as HTMLElement;
-    const boxElement = document.querySelector(".containerBox-5") as HTMLElement;
+    const boxElement = document.querySelector(".bg_box5") as HTMLElement;
     if (!backgroundElement || !boxElement) return;
-    setTimeout(() => {
-      const boxCenter = boxElement.offsetLeft;
-      const screenCenter = window.innerWidth;
-      const scrollPosition = boxCenter - screenCenter / 2;
 
-      backgroundElement.scrollTo({ left: scrollPosition, behavior: "smooth" });
-      setIsHovered(true);
-    }, 300); // ⏳ ĐÃ CHỈNH LẠI 800ms
-  };
+    const updatePosition = () => {
+      requestAnimationFrame(() => {
+        const scrollLeft = backgroundElement.scrollLeft;
+        const screenWidth = backgroundElement.offsetWidth;
+        const boxWidth = boxElement.offsetWidth;
 
+        // Tính toán vị trí căn giữa
+        const newLeft = scrollLeft + (screenWidth / 2) - (boxWidth / 2);
+        boxElement.style.transform = `translateX(${newLeft}px)`;
+      });
+    };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+    backgroundElement.addEventListener("scroll", updatePosition);
+    updatePosition(); // Chạy ngay khi load trang
+
+    return () => {
+      backgroundElement.removeEventListener("scroll", updatePosition);
+    };
+  }, []);
 
   return (
     <>
-      <div className={`containerBox-5 ${isCentered ? "centered" : ""} ${isHovered ? "hovered" : ""}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className={`containerBox-5 ${isCentered ? "centered" : ""}`}>
         <div className="top">
           <img src="./img/box5.png" alt="Apple" />
         </div>
@@ -83,7 +86,7 @@ export default function ComponentBox5() {
           </div>
         </div>
       </div>
-      <div className="bg" style={{ left: `${bgPosition}px` }}></div>
+      <div className="bg_box5"></div>
     </>
   );
 }

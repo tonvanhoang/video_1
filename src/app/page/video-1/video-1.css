@@ -1,15 +1,54 @@
-.backGroud{
-    background: radial-gradient(400px at top right, rgba(107, 87, 132, 0.3), transparent),
-    radial-gradient(400px at bottom left, rgba(107, 87, 132, 0.3), transparent),
-    #ffffff;
-    overflow-y: hidden;
+.backGroud {
+    background: white;
     overflow-x: auto;
+    overflow-y: hidden;
     width: 100%;
     height: 100vh;
-    position: relative;
+    position: fixed;
     transition: background-color 0.3s ease-in-out;
     z-index: 100;
 }
-.backGroud::-webkit-scrollbar{
+
+.backGroud::before{
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(107, 87, 132, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.backGroud::before {
+    top: -200px;
+    right: -200px;
+}
+
+/* Hiệu ứng loang vàng ở giữa */
+.backGroud::after {
+    content: "";
+    position: fixed;
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(208,196,188, 0.7) 0%, rgba(255, 255, 255, 0) 60%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.backGroud.hidden-scroll {
+    overflow-y: hidden;
+}
+
+.backGroud.scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.backGroud::-webkit-scrollbar {
     display: none;
 }

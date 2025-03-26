@@ -1,13 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
 import "../box-2/box-2.css";
-
-export default function ComponentBox2() {
+interface ComponentBox2Props {
+  ShowDetail: () => void;
+}
+export default function ComponentBox2({ ShowDetail }: ComponentBox2Props) {
   const [prevScrollLeft, setPrevScrollLeft] = useState(0); 
   const [isExpanded,setIsExpanded] = useState(false)
   const [isShrink,setIsShrink] = useState(false)
   const [scrollTimes, setScrollTimes] = useState(0);
-
+  const [isReset,setIsreset]= useState(false)
   useEffect(() => {
     const backgroundElement = document.querySelector(".backGroud") as HTMLElement;
     const boxElement = document.querySelector(".containerBox-1") as HTMLElement;
@@ -26,6 +28,9 @@ export default function ComponentBox2() {
               setIsShrink(false)
               setIsExpanded(true)
             }
+            else if(prev ===2){
+              setIsreset(true)
+            }
             return prev + 1;
           });
         } else if (currentScrollLeft < prevScrollLeft) {
@@ -34,11 +39,9 @@ export default function ComponentBox2() {
         setPrevScrollLeft(currentScrollLeft);
       }, 300);
     };
-
     if (backgroundElement) {
       backgroundElement.addEventListener("scroll", handleScroll);
     }
-
     return () => {
       if (backgroundElement) {
         backgroundElement.removeEventListener("scroll", handleScroll);
@@ -47,21 +50,21 @@ export default function ComponentBox2() {
     };
   }, [prevScrollLeft]);
 
-  
-
   return (
+    <>
     <div
     className={`containerBox-2
       ${isExpanded ? "expand" : ""}
-      ${isShrink ? "shrink" : ""}`}  >
+      ${isShrink ? "shrink" : ""}
+      ${isReset ? "reset":""}
+      `}  >
       <div className="img">
-        <img src="./img/cam1.png" alt="Apple Watch 1" />
-        {/* <img src="./img/apple2.png" alt="Apple Watch 2" /> */}
+        <img src="./img/cam2.png" alt="Apple Watch 1" />
       </div>
       <div className="content">
-        <span className="brand">Apple</span>
-        <a className="name" href="#">Watch Series 9</a>
-        <span className="price">$699</span>
+        <span className="brand">B&O</span>
+        <a className="name" href="#" onClick={ShowDetail} >Beoplay H95</a>
+        <span className="price">$849 </span>
         <p>
           Swimproof and crack-resistant technology makes this a great fit for both your weekly swims and early-morning hikes.
         </p>
@@ -70,5 +73,6 @@ export default function ComponentBox2() {
         </div>
       </div>
     </div>
+    </>
   );
 }
