@@ -153,18 +153,21 @@ export default function ComponentSection2(){
                     </div>
                     <div className='item'>
                         <div>
-                            <a href="#">50%+</a>
-                            <span>Battery Life</span>
+                            <a href="#">Resolution</a>
+                            <span>Full HD (1080p)</span>
                         </div>
                         <div className='pin'>
                         </div>
                     </div>
                     <div className='item'>
                         <div>
-                            <a href="#">20%+</a>
-                            <span>Lighter</span>
+                            <a href="#">Image Sensor</a>
+                            <span>CMOS, CCD</span>
                         </div>
-                        <img src="/img/can.png" alt="" />
+                        <div className="lightbulb">
+                            💡
+                            </div>
+
                     </div>
                 </div>
                 
