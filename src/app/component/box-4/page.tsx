@@ -88,7 +88,7 @@ export default function ComponentBox4() {
             <a>$49.99</a>
           </div>
           <div className="rating">
-            <div className="item-1">60%</div>
+            <div className="item-1"><span>70%</span></div>
           </div>
         </div>
       </div>

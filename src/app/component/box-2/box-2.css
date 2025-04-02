@@ -1,3 +1,13 @@
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 .containerBox-2 {
     position: absolute;
     top: 75%;
@@ -9,15 +19,14 @@
     display: flex;
     justify-content: center;
     transition: all 0.8s ease-in-out;
-    box-shadow: 0px 10px 30px rgba(208,196,188, 0.7); 
+    box-shadow: 0px 12px 15px rgba(181,161,129, 0.5); 
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     z-index: 0;
 }
-
 .containerBox-2.expand {
     transform: translate(-50%, -50%) scale(1.15);
-    box-shadow: 0px 20px 30px rgba(208,196,188, 0.7); 
+    box-shadow: 0px 35px 30px rgba(181,161,129, 1); 
     z-index: 3;
 }
 
@@ -25,7 +34,7 @@
     top: 75%;
     left: 66%;
     transform: translate(-50%, -50%) scale(0.85);
-    box-shadow: 0 30px 50px rgba(208,196,188, 0.3);
+    box-shadow: 0 27px 30px rgba(181,161,129, 0.5);
     z-index: 0;
     background-color: white;
 }
@@ -68,22 +77,33 @@
     height: 900px;
     z-index: 1;
     transition: all 1.5s ease-in-out;
-
     opacity: 1;
 }
 
 .containerBox-2.reset .content {
-    transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+    transition: all 1.2s ease-in-out;
     transform: scale(1);
 }
-
 .containerBox-2.reset .content p {
-    opacity: 0;
-    height: auto;
+    opacity: 1;
     transform: translateY(0);
-    display: none;
-    transition: all 0.8s ease-in-out;
-    animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    animation: fadeDownBeforeHide 0.8s ease-in-out forwards;
+}
+@keyframes fadeDownBeforeHide {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+        display: none;
+    }
 }
 
 .containerBox-2.reset .img {
@@ -97,19 +117,6 @@
     opacity: 1;
     transform: scale(1);
 }
-
-/* Animation mượt mà */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .containerBox-2 .content {
     width: 40%;
     display: flex;
@@ -132,7 +139,6 @@
     display: none;
     transform: translateY(20px);
     transition: all 0.8s ease-in-out;
-
 }
 .containerBox-2 .img img {
     max-width: 100%;

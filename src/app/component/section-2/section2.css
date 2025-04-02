@@ -1,0 +1,399 @@
+@keyframes showImg{
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+        transition: all 1.2s ease-in-out;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1.2s ease-in-out;
+    }
+}
+@keyframes showBottom{
+    0%{
+        opacity: 0;
+        transition: all 1.2s ease-in-out;
+        transform: translateY(100%);
+
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1.2s ease-in-out;
+
+    }
+}
+@keyframes showTopLeft{
+    0%{
+        width: 0%;
+
+    }
+    100%{
+        width: 70%;
+        transition: all 1.2s ease-in-out;
+
+    }
+}
+.containerSection2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #050412 10%, #151456 50%, transparent 90%), 
+    radial-gradient(circle at top right, #8F4675 10%, transparent 70%);    
+    transition: all 1.2s ease-in-out;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+}
+.containerSection2.setSection2{
+    opacity: 1;
+}
+.top{
+    width: 85%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    transition: all 1.2s ease-in-out;
+    margin: auto;
+}
+.top.setTop {
+    height: 50vh;
+    transition: all 1.2s ease-in-out;
+}
+
+.top .left{
+    width: 0%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1.2s ease-in-out;
+
+}
+.top .left.setLeft{
+   animation: showTopLeft 2s ease-in-out forwards;
+}
+.top .left .LeftContent{
+    width: 100%;
+    transition: all 1.2s ease-in-out;
+    opacity: 0;
+    transform: translateY(100%);
+}
+.top .left .LeftContent.setContent{
+    opacity: 1;
+    transform: translateY(0);
+}
+.top .left .LeftContent a{
+    color: white;
+    font-size: 28px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.7s;
+    display: flex;
+    gap: 6px;
+}
+.top .left .LeftContent span{
+    color: red;
+    font-size: 28px;
+    font-weight: 600;
+}
+.top .left .LeftContent p{
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+}
+.top .left button{
+    border: 1px solid white;
+    background: none;
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 5px 40px;
+    color: white;
+    font-weight: 400;
+    transition: all 0.7s;
+    margin-top: 20px;
+}
+.top .left button:hover{
+    color: red;
+    border: 1px solid red;
+    box-shadow: 0px 0px 30px red;
+}
+.top .right{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: all 1.2s ease-in-out;
+}
+.top .right img{
+    opacity: 0;
+    width: 100%;
+    object-fit: cover;
+    background-position: center;
+    transition: all 1.2s ease-in-out;
+}
+.top .right.setImg img{
+    animation: showImg 1.2s ease-in-out forwards;
+    transition: all 1.2s ease-in-out;
+
+}
+.top .right.scaleImg img{
+    opacity: 1;
+    transition: all 1.2s ease-in-out;
+}
+.top .right .childImg{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: all 1.2s ease-in-out;
+
+}
+.top .right .childImg.setChildImg{
+        opacity: 1;
+    transition: all 1.2s ease-in-out;
+}
+.top .right .childImg .item{
+    border: 1px solid #d2d2d2;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.top .right .childImg .item:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 30px red;
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+.top .right .childImg .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-position: center;
+    border-radius: 20px;
+    transition: all 1.2s ease-in-out;
+}
+.bottom{
+    padding: 10px;
+    width: 100%;
+    height: 50vh;
+    opacity: 0;
+}
+.bottom.setBottom{
+    animation: showBottom 1.2s ease-in-out forwards;
+}
+.bottom .item-1{
+    display: flex;
+    gap: 15px;
+}
+.bottom .item-1 .left{
+    width: 25%;
+    border-radius: 20px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 5px #d2d2d2;
+
+}
+.bottom .item-1 .left a{
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+    line-height: 28px;
+}
+.bottom .item-1 .left a span{
+    color: red;
+    display: block;
+}
+.bottom .item-1 .right{
+    box-shadow: 0px 0px 5px #d2d2d2;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    width: 75%;
+    display: flex;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.bottom .item-1 .right .item{
+    display: flex;
+    padding-left: 50px;
+    align-items: center;
+    width: 33%;
+}
+.bottom .item-1 .right .item a{
+    color: thistle;
+    font-size: 48px;
+    line-height: 36px;
+}
+.bottom .item-1 .right .item span{
+    color: thistle;
+    font-size: 16px;
+    line-height: 14px;
+    width: 30px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.bottom .item-2{
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+.bottom .item-2 .left{
+    width: 25%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px #d2d2d2;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+}
+.bottom .item-2 .left a{
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+    width: 50px;
+    line-height: 28px;
+
+}
+.bottom .item-2 .left a span{
+    color: red;
+    display: block;
+
+}
+.bottom .item-2 .right{
+    width: 75%;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+.bottom .item-2 .right .item{
+    border-radius: 20px;
+    display: flex;
+    padding-left: 50px;
+    box-shadow: 0px 0px 5px #d2d2d2;
+    align-items: center;
+    justify-content: space-between;
+    height: 150px;
+    width: 33.33%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+}
+
+.bottom .item-2 .right .noHeat{
+    background: radial-gradient(circle at 90% 50%, rgba(0, 100, 255, 0.6), rgba(0, 0, 0, 0.8) 60%);
+}
+.pin {
+    width: 150px;
+    height: 80px;
+    background: linear-gradient(45deg, 
+    rgba(255, 255, 0, 0.8),
+        rgba(0, 255, 255, 1), 
+        rgba(255, 0, 255, 0.8), 
+        rgba(255, 255, 0, 0.8),
+        rgba(0, 255, 255, 1)
+        );
+    border-radius: 10px;
+    filter: blur(2px);
+}
+
+.bottom .item-2 .right .item a{
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    border-radius: 20px;
+    width: 50px;
+    line-height: 28px;
+}
+.bottom .item-2 .right .item span{
+    color: white;
+    font-size: 16px;
+    display: block;
+}.bottom .item-2 .right .item img{
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+}
+
+.spiral-container {
+    position: relative;
+    width:150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   overflow: hidden;
+   border-radius: 50%;
+    padding-left: 50px;
+    margin-right: 50px;
+  }
+  
+  /* Vòng xoắn */
+  .spiral {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    animation: spiralEffect 2s infinite ease-out;
+  }
+  
+  /* Tạo nhiều vòng xoắn */
+  .spiral:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    animation-delay: 0.2s;
+    transform: rotate(30deg);
+  }
+  
+  .spiral:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    animation-delay: 0.4s;
+    transform: rotate(45deg);
+  }
+  
+  .spiral:nth-child(4) {
+    width: 80px;
+    height: 80px;
+    animation-delay: 0.6s;
+    transform: rotate(60deg);
+  }
+  
+  .spiral:nth-child(5) {
+    width: 100px;
+    height: 100px;
+    animation-delay: 0.8s;
+    transform: rotate(75deg);
+  }
+  @keyframes spiralEffect {
+    0% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2) rotate(90deg);
+      opacity: 0;
+    }
+  }

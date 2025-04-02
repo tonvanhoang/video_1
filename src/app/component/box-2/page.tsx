@@ -1,10 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import "../box-2/box-2.css";
-interface ComponentBox2Props {
-  ShowDetail: () => void;
-}
-export default function ComponentBox2({ ShowDetail }: ComponentBox2Props) {
+import Link from "next/link";
+export default function ComponentBox2() {
   const [prevScrollLeft, setPrevScrollLeft] = useState(0); 
   const [isExpanded,setIsExpanded] = useState(false)
   const [isShrink,setIsShrink] = useState(false)
@@ -63,7 +61,7 @@ export default function ComponentBox2({ ShowDetail }: ComponentBox2Props) {
       </div>
       <div className="content">
         <span className="brand">B&O</span>
-        <a className="name" href="#" onClick={ShowDetail} >Beoplay H95</a>
+        <Link className="name" href={`/page/video-2`}>Beoplay H95</Link>
         <span className="price">$849 </span>
         <p>
           Swimproof and crack-resistant technology makes this a great fit for both your weekly swims and early-morning hikes.

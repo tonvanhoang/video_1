@@ -1,0 +1,6 @@
+.containerVideo2{
+    background: linear-gradient(to right, #050412 10%, #151456 50%, transparent 90%), 
+    radial-gradient(circle at top right, #8F4675 10%, transparent 70%);    
+    width: 100%;
+    height: 100vh;
+}

@@ -82,7 +82,7 @@ export default function ComponentBox5() {
             <a>$49.99</a>
           </div>
           <div className="rating">
-            <div className="item-1">60%</div>
+            <div className="item-1"><span>60%</span></div>
           </div>
         </div>
       </div>
